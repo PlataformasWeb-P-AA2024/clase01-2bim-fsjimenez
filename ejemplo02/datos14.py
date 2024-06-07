@@ -20,3 +20,14 @@ for canton in cantones:
 parroquias = session.query(Parroquia).all()
 for parroquia in parroquias:
     print(f'Parroquia: {parroquia.nombre}, Número de establecimientos: {parroquia.obtener_numero_establecimientos()}, Tipos de jornada: {parroquia.obtener_tipos_jornada()}')
+
+
+provincias = session.query(Provincia).all()
+
+for provincia in provincias:
+    print(f'Provincia: {provincia.nombre}')
+    parroquias = provincia.obtener_lista_parroquias()
+    print('Parroquias:')
+    for parroquia in parroquias:
+        print(f'- {parroquia}')
+    print()

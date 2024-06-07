@@ -14,6 +14,13 @@ class Provincia(Base):
 
     def obtener_numero_docentes(self):
         return sum(canton.obtener_numero_estudiantes() for canton in self.cantones)
+    
+    def obtener_lista_parroquias(self):
+        cadena = ""
+        for c in self.cantones:
+            for p in c.parroquias:
+                cadena = "%s%s\n" % (cadena, p.nombre)
+        return cadena
 
 class Canton(Base):
     __tablename__ = 'canton'
